@@ -60,12 +60,12 @@ public class Menu {
     }
     
     public void ImprimirProduto(){
-            System.out.println(
-                    "\nCod: " + produto.Cod +
-                    "\nDescrição: " + produto.Descricao +
-                    "\nValor: " + produto.Valor +
-                    "\nQuantidade: " + produto.Quantidade
-            );
+        System.out.println(
+                "\nCod: " + produto.Cod +
+                "\nDescrição: " + produto.Descricao +
+                "\nValor: " + produto.Valor +
+                "\nQuantidade: " + produto.Quantidade
+        );
     }
     
     public void Editar(){
@@ -111,6 +111,24 @@ public class Menu {
         }
         System.out.println("");
     }
+    
+    public void ExcluirInformacoesProduto(int valor){
+        Produto produto = new Produto();
+        produto.Cod = valor;
+        System.out.println("Produto deletado!");
+        produto.Descricao = "";
+        produto.Quantidade = 0;
+        produto.Valor = 0;
+    }
+    
+    public void ExcluirProduto(){
+        this.Listar();
+        produto = this.Buscar();
+        Produto pro = InformacoesProduto(produto.Cod);
+        ListaProdutos[pro.Cod -1] = pro;
+        this.CriarMenu();
+    }
+    
     
     
 }
