@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Menu {
     public int OpcMenu;
     public Produto produto;
-    public Produto[] ListaProduto;
+    public Produto[] ListaProdutos;
     Scanner scan = new Scanner(System.in);
     
     public void CriarMenu(){
@@ -19,6 +19,7 @@ public class Menu {
         OpcMenu = scan.nextInt();
         GetExecucao();
     }
+    
     public void GetExecucao(){
         switch (OpcMenu){
             case 1:
@@ -47,6 +48,7 @@ public class Menu {
             
         }
     }
+    
     public void Cadastrar(){
         System.out.println("Quantos Produtos Deseja Cadastrar? ");
         int qtde = scan.nextInt();
@@ -56,6 +58,7 @@ public class Menu {
         }
         this.CriarMenu();
     }
+    
     public void ImprimirProduto(){
             System.out.println(
                     "\nCod: " + produto.Cod +
@@ -64,4 +67,50 @@ public class Menu {
                     "\nQuantidade: " + produto.Quantidade
             );
     }
+    
+    public void Editar(){
+        this.Listar();
+        produto = this.Buscar();
+        Produto pro = InformacoesProduto(produto.Cod);
+        ListaProdutos[pro.Cod -1] = pro;
+        this.CriarMenu();
+    }
+    
+    public Produto InformacoesProduto (int valor){
+        Produto produto = new Produto();
+        produto.Cod = valor;
+        System.out.println("Digite a descrição: ");
+        produto.Descricao = scan.next();
+        System.out.println("Digite uma quantidade: ");
+        produto.Quantidade = scan.nextInt();
+        System.out.println("Digite um valor unitário: ");
+        produto.Valor = scan.nextInt();
+        return produto;
+    }
+    
+    public Produto Buscar (){
+        System.out.println("Digite o codigo: ");
+        int pesquisa = scan.nextInt();
+        for(int x = 0; x <ListaProdutos.length; x++){
+            if (ListaProdutos[x].Cod == pesquisa){
+                return ListaProdutos[x];
+            }
+        }
+        return null;
+    }
+    
+    public void Listar(){
+        for(int x = 0; x < ListaProdutos.length; x++){
+            System.out.println("++++++++++++++++++++++++++++++");
+            System.out.println(
+                    "\nCod: " + ListaProdutos[x].Cod +
+                    "\nDescrição: " + ListaProdutos[x].Descricao +
+                    "\nValor: " + ListaProdutos[x].Valor +
+                    "\nQuantidade: " + ListaProdutos[x].Quantidade
+            );
+        }
+        System.out.println("");
+    }
+    
+    
 }
