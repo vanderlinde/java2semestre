@@ -1,21 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+//Aula realizada no dia 11 de Outubro de @018, Armazenamento de dados em arquivos
 package aula181011;
+
+import java.io.IOException;
 
 /**
  *
  * @author Marcelo Jr
  */
 public class Aula181011 {
-
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public static void main(String[] args) throws IOException {
+        new Arquivo();
     }
     
 }
